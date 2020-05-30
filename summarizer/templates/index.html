@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block body %}   
+
+    <div class="container my-4"  >
+        <form action = "summarize_text" method = "POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea class="form-control" id="input_text_1" name = "input_text" id = 'input_text' placeholder="Enter your text here" rows="8" spellcheck="true">{{input_text}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block my-4" my>Summarize</button>
+        </form>
+
+        <div class="{{no_file_alert_visibality}} alert alert-{{alert_type}} alert-dismissible fade show" role="alert">
+            <strong>{{alert_text}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form method='POST' action = 'upload_file' enctype='multipart/form-data'>
+            {% csrf_token %}
+            <input type="file" name="uploaded_file">
+            <button type="submit" class="btn btn-info">Upload File</button>
+        <form>
+
+    </div>
+    <div class="container my-4">
+        <div class=" {{summary_1_visibality}} form-group">
+            <label for="exampleFormControlFile1">Summary-1</label>
+            <textarea class="form-control" id="input_text_1" rows="8" spellcheck="true">{{kg_summary}}</textarea>
+        </div>
+        <div class="{{summary_2_visibality}} form-group">
+            <label for="exampleFormControlFile1">Summary-2</label>
+            <textarea class="form-control" id="input_text_1" rows="8" spellcheck="true">{{tr_summary}}</textarea>
+        </div>
+        <div class="{{summary_3_visibality}} form-group">
+            <label for="exampleFormControlFile1">Summary-3</label>
+            <textarea class="form-control" id="input_text_1" rows="8" spellcheck="true">{{ukg_summary}}</textarea>
+        </div>
+        
+    </div
+
+
+{% endblock body %}
+    
